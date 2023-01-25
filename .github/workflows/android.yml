@@ -23,8 +23,6 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: |
-        - apt-get --quiet update --yes
-        - wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-${SDK_TOOLS}_latest.zip
-        - unzip -q android-sdk.zip -d android-sdk-linux
-        - rm android-sdk.zip
+    - uses: malinskiy/action-android/install-sdk@release/0.1.4
+    - run: sdkmanager platform-tools
+    - run: ./gradlew app:illusionDeviceDebugAndroidTest
