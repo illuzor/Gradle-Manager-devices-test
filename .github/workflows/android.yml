@@ -24,7 +24,8 @@ jobs:
 
       - name: Build with Gradle
         uses: malinskiy/action-android/install-sdk@release/0.1.4
-#      - name: Build with Gradle  1
-#      - run: sdkmanager platform-tools
+
+      - name: Build with Gradle  1
+      - run: sdkmanager platform-tools
 #      - name: Build with Gradle 2
 #      - run: ./gradlew app:illusionDeviceDebugAndroidTest
