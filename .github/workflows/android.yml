@@ -1,32 +1,30 @@
-name: Android CI
+name: Android tests
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [ push ]
 
 jobs:
-  build:
 
-    runs-on: macos-latest
-
+  Device:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        #        os: [ self-hosted, macos-latest ]
+        os: [ macos-latest ]
+        managed-virtual-devicel: [ 28 ]
     steps:
-      - uses: actions/checkout@v3
-      - name: set up JDK 11
-        uses: actions/setup-java@v3
+
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v3
         with:
-          java-version: '11'
           distribution: 'temurin'
-          cache: gradle
+          java-version: '17'
+        if: ${{ matrix.os != 'self-hosted' }}
 
-      - run: chmod +x gradlew
+      - uses: android-actions/setup-android@v2
 
-      - name: Setup android sdk
-        uses: malinskiy/action-android/install-sdk@release/0.1.4
+      - uses: gradle/gradle-build-action@v2
+        with:
+          arguments: app:illusionDeviceDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=siarhei.luskanau.managed.virtual.device.ExampleInstrumentedTest -Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect --stacktrace
 
-      - name: Update sdkmanager
-        run: sdkmanager platform-tools
-
-      - name: Run tests
-        run: ./gradlew app:illusionDeviceDebugAndroidTest
