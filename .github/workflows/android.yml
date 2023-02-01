@@ -11,7 +11,7 @@ jobs:
       matrix:
         #        os: [ self-hosted, macos-latest ]
         os: [ macos-latest ]
-        managed-virtual-devicel: [ 28 ]
+        managed-virtual-devicel: [ 29 ]
     steps:
 
       - uses: actions/checkout@v2
