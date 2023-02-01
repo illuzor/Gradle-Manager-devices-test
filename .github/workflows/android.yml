@@ -22,10 +22,11 @@ jobs:
 
       - run: chmod +x gradlew
 
-      - name: Build with Gradle
+      - name: Setup android sdk
         uses: malinskiy/action-android/install-sdk@release/0.1.4
 
-      - name: Build with Gradle  1
+      - name: Update sdkmanager
         run: sdkmanager platform-tools
-#      - name: Build with Gradle 2
-#      - run: ./gradlew app:illusionDeviceDebugAndroidTest
+
+      - name: Run tests
+        run: ./gradlew app:illusionDeviceDebugAndroidTest
