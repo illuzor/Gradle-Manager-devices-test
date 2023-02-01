@@ -22,7 +22,7 @@ jobs:
 
       - run: chmod +x gradlew
 
-#      - name: Build with Gradle
-#      - uses: malinskiy/action-android/install-sdk@release/0.1.4
-#      - run: sdkmanager platform-tools
-#      - run: ./gradlew app:illusionDeviceDebugAndroidTest
+      - name: Build with Gradle
+      - uses: malinskiy/action-android/install-sdk@release/0.1.4
+      - run: sdkmanager platform-tools
+      - run: ./gradlew app:illusionDeviceDebugAndroidTest
