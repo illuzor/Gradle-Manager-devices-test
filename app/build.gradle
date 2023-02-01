@@ -39,7 +39,7 @@ android {
                     // Use device profiles you typically see in Android Studio.
                     device = "Pixel 2"
                     // Use only API levels 27 and higher.
-                    apiLevel = 27
+                    apiLevel = 28
                     // To include Google services, use "google".
                     systemImageSource = "aosp"
                 }
