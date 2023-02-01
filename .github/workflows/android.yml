@@ -20,8 +20,8 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-#        run: chmod +x gradlew
-#
+      - run: chmod +x gradlew
+
 #      - name: Build with Gradle
 #      - uses: malinskiy/action-android/install-sdk@release/0.1.4
 #      - run: sdkmanager platform-tools
